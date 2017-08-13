@@ -3,11 +3,16 @@
      -webkit-box-sizing: border-box;
      box-sizing: border-box;
  }
- .container {
+.container {
      margin: 0 auto;
      max-width: 64rem;
  }
- @media (min-width: 640px) {
+
+ .container.narrow {
+    max-width: 56rem;
+}
+
+@media (min-width: 640px) {
      html { font-size: 112%; }
    }
 
@@ -89,7 +94,8 @@ html {
 .links-container .navbar-link:hover {
    color: rgb(233,50,117);
  }
- .links-container .navbar-link:active {
+
+.links-container .navbar-link:active {
     color: rgb(233,50,117);
     background-color: white;
   }
