@@ -1,4 +1,4 @@
-// forEach should take two arguments, an array and a function
+// for Each should take two arguments, an array and a function
 // and then call the function on each element in the array
 function forEach(array, funct) {
   for (var i=0; i<array.length; i++){
