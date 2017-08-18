@@ -56,6 +56,12 @@ var albumPicasso = {
 
      return template;
  };
+ var albumTitle = document.getElementsByClassName('album-view-title')[0];
+ var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+ var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+ var albumImage = document.getElementsByClassName('album-cover-art')[0];
+ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
  var setCurrentAlbum = function(album) {
     // #1
     var albumTitle = document.getElementsByClassName('album-view-title')[0];
@@ -81,8 +87,20 @@ var albumPicasso = {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+// add event listener
+var albums = [albumPicasso, albumMarconi, albumKendrick];
+var index = 1;
+albumImage.addEventListener('click', function(event) {
+    setCurrentAlbum(albums[index]);
+    index++;
+  if (index == albums.length) {
+      index = 0;
+    }
+  });
 };
 
-// Add an event listener to the album cover. When a user clicks it, the album page content should toggle between the three album objects: albumPicasso, albumMarconi, and your album object.
 
-}
+
+
+// Add an event listener to the album cover. When a user clicks it, the album page content should toggle between the three album objects: albumPicasso, albumMarconi, and your album object.
