@@ -84,13 +84,23 @@ var albumPicasso = {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
 };
-
+// When we wrote findParentByClassName(), we did not account for some potential errors that could occur if we used the method elsewhere. For example, the function doesn't check for any situation where an ancestor element with the specified class name didn't exist, nor does it check to see if the starting element has a parent.
+//
+// Re-write the function so that it:
+// Checks to see if a parent exists. If it doesn't, then console.log a string that says "No parent found".
+// Shows a different string in console.log when it fails to find a parent with the given class name: "No parent found with that class name".
 var findParentByClassName = function(element, targetClass) {
-    if (element) {
-        var currentParent = element.parentElement;
-        while (currentParent.className !== targetClass && currentParent.className !== null) {
+  var currentParent = element.parentElement;
+
+  if (currentParent = undefined {
+    console.log('No Parend found')
+  }
+  else if (document.getElementsByClassName(element.parentElement) == null) {
+    console.log("no parent found with that class name");
+  }
+  while (currentParent.className !== targetClass && currentParent.className !== null) {
             currentParent = currentParent.parentElement;
-        }
+}
         return currentParent;
     }
 };
