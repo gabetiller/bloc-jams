@@ -192,12 +192,34 @@ var updatePlayerBarSong = function() {
 
  var $previousButton = $('.main-controls .previous');
  var $nextButton = $('.main-controls .next');
+ var $playPause = $('.main-controls .play-pause');
+
+ var togglePlayFromPlayerBar = function() {
+   var $playPause = $('.main-controls .play-pause');
+    if (currentSoundFile.isPaused()) {
+    $(this).html(playerBarPauseButton);
+    $(this).html(pauseButtonTemplate);
+    currentSoundFile.play();
+  }
+    else {
+        $(this).html(playButtonTemplate);
+        $playPause.html(playerBarPlayButton);
+        currentSoundFile.pause();
+    }
+ };
 
  $(document).ready(function() {
       setCurrentAlbum(albumPicasso);
       $previousButton.click(previousSong);
       $nextButton.click(nextSong);
+      $playPause.click(togglePlayFromPlayerBar);
 });
+
+
+
+
+
+
 
 
 
