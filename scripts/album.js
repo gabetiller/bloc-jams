@@ -136,9 +136,18 @@ var updateSeekBarWhileSongPlays = function() {
              var $seekBar = $('.seek-control .seek-bar');
 
              updateSeekPercentage($seekBar, seekBarFillRatio);
+             setCurrentTimeInPlayerBar(currentTime);
          });
      }
  };
+
+//  Write a function called setCurrentTimeInPlayerBar() that takes one argument, currentTime, that sets the text of the element with the .current-time class to the current time in the song.
+// Add the method to updateSeekBarWhileSongPlays() so the current time updates with song playback.
+
+var setCurrentTimeInPlayerBar = function(currentTime) {
+  var currentTime = currentSoundFile.getTime();
+    $(".current-time").text(currentTime);
+};
 
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
