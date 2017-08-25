@@ -33,7 +33,7 @@ var getSongNumberCell = function(number) {
         '<tr class="album-view-song-item">'
       + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + songLength + '</td>'
+      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
       + '</tr>'
       ;
 
@@ -136,18 +136,40 @@ var updateSeekBarWhileSongPlays = function() {
              var $seekBar = $('.seek-control .seek-bar');
 
              updateSeekPercentage($seekBar, seekBarFillRatio);
-             setCurrentTimeInPlayerBar(currentTime);
+
+
+             setCurrentTimeInPlayerBar(filterTimeCode(this.getTime()));
+             setTotalTimeInPlayerBar(filterTimeCode(this.getDuration()));
+             filterTimeCode(this.parseFloat());
          });
      }
  };
 
-//  Write a function called setCurrentTimeInPlayerBar() that takes one argument, currentTime, that sets the text of the element with the .current-time class to the current time in the song.
-// Add the method to updateSeekBarWhileSongPlays() so the current time updates with song playback.
-
 var setCurrentTimeInPlayerBar = function(currentTime) {
-  var currentTime = currentSoundFile.getTime();
     $(".current-time").text(currentTime);
 };
+
+var setTotalTimeInPlayerBar = function(totalTime) {
+  $(".total-time").text(totalTime);
+};
+
+var filterTimeCode = function(timeInSeconds) {
+
+  var minutes = Math.floor(timeInSeconds / 60);
+  var seconds = Math.floor(timeInSeconds - minutes * 60);
+  return minutes + ":" + seconds;
+};
+
+// Write a function called filterTimeCode that takes one argument, timeInSeconds. It should:
+// Use the parseFloat() method to get the seconds in number form.
+// Store variables for whole seconds and whole minutes (hint: use Math.floor() to round numbers down).
+// Return the time in the format X:XX
+
+// Wrap the arguments passed to setCurrentTimeInPlayerBar() and setTotalTimeInPlayerBar() in a filterTimeCode()
+// call so the time output below the seek bar is formatted.
+// Wrap the songLength variable in createSongRow() in a filterTimeCode() call so the time lengths are formatted.
+
+//Wrap the songLength variable in createSongRow() in a filterTimeCode() call so the time lengths are formatted.
 
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
