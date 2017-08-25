@@ -316,7 +316,6 @@ var updatePlayerBarSong = function() {
    var $playPause = $('.main-controls .play-pause');
     if (currentSoundFile.isPaused()) {
     $(this).html(playerBarPauseButton);
-    $(this).html(pauseButtonTemplate);
     currentSoundFile.play();
   }
     else {
