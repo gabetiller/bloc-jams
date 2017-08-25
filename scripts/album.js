@@ -157,7 +157,12 @@ var filterTimeCode = function(timeInSeconds) {
 
   var minutes = Math.floor(timeInSeconds / 60);
   var seconds = Math.floor(timeInSeconds - minutes * 60);
+    if(seconds < 10) {
+  return minutes + ":0" + seconds;
+}
+else {
   return minutes + ":" + seconds;
+}
 };
 
 // Write a function called filterTimeCode that takes one argument, timeInSeconds. It should:
@@ -313,7 +318,7 @@ var updatePlayerBarSong = function() {
  var $playPause = $('.main-controls .play-pause');
 
  var togglePlayFromPlayerBar = function() {
-   var $playPause = $('.main-controls .play-pause');
+    var $playPause = $('.main-controls .play-pause');
     if (currentSoundFile.isPaused()) {
     $(this).html(playerBarPauseButton);
     currentSoundFile.play();
