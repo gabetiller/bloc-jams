@@ -129,18 +129,15 @@ var getSongNumberCell = function(number) {
 
 var updateSeekBarWhileSongPlays = function() {
      if (currentSoundFile) {
-         // #10
          currentSoundFile.bind('timeupdate', function(event) {
-             // #11
              var seekBarFillRatio = this.getTime() / this.getDuration();
              var $seekBar = $('.seek-control .seek-bar');
 
              updateSeekPercentage($seekBar, seekBarFillRatio);
 
-
              setCurrentTimeInPlayerBar(filterTimeCode(this.getTime()));
              setTotalTimeInPlayerBar(filterTimeCode(this.getDuration()));
-             filterTimeCode(this.parseFloat());
+            //  filterTimeCode(this.parseFloat());
          });
      }
  };
@@ -157,10 +154,10 @@ var filterTimeCode = function(timeInSeconds) {
 
   var minutes = Math.floor(timeInSeconds / 60);
   var seconds = Math.floor(timeInSeconds - minutes * 60);
-    if(seconds < 10) {
+  if(seconds < 10) {
   return minutes + ":0" + seconds;
 }
-else {
+  else {
   return minutes + ":" + seconds;
 }
 };
@@ -178,11 +175,9 @@ else {
 
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
-    // #1
     offsetXPercent = Math.max(0, offsetXPercent);
     offsetXPercent = Math.min(100, offsetXPercent);
 
-    // #2
     var percentageString = offsetXPercent + '%';
     $seekBar.find('.fill').width(percentageString);
     $seekBar.find('.thumb').css({left: percentageString});
